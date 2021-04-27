@@ -6,8 +6,8 @@ public class RaillsRotation : MonoBehaviour
 {
     public int frame = 0;
     public bool railsTurn = false; // false -- прямо, true -- налево
-    private bool left = false;
-    private bool action = false;
+    private bool turnLeft = false;
+    //private bool action = false;
     public TranlationMover tranlationMover; //в самом Unity перетащил скрипт к которому (смотри в свойствах этого скрипта у направляющих рельсов)
     private bool currentShouldTurn;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class RaillsRotation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate() //поворот
     {
-        if(railsTurn != left/*currentShouldTurn*/)
+        if(railsTurn != turnLeft/*currentShouldTurn*/)
         {
             /*if((canTurn==true)) // не знаю, надо ли париться с тем, нужно ли делать проверки на тот промежуток времени, когда идет переброс направляющих на другую сторону, если вдруг изменится в это время shouldTurn
             {
@@ -30,38 +30,61 @@ public class RaillsRotation : MonoBehaviour
             }*/
             if (frame < 6)
             {
-                switch (left)
+                if (turnLeft)
                 {
-                    case false:
-                        {
-                            Quaternion rotationY = Quaternion.AngleAxis(0.1f, Vector3.down);
-                            transform.rotation *= rotationY;
-                            frame++;
-                            if (frame == 6)
-                            {
-                                left = true;
-                                frame = 0;
-                            }
-                            break;
-                        }
-                    case true:
-                        {
-                            Quaternion rotationY = Quaternion.AngleAxis(0.1f, Vector3.up);
-                            transform.rotation *= rotationY;
-                            frame++;
-                            if (frame == 6)
-                            {
-                                left = false;
-                                frame = 0;
-                            }
-                            break;
-                        }
-                    default:
-                        {
-
-                            break;
-                        }
+                    Quaternion rotationY = Quaternion.AngleAxis(0.1f, Vector3.up);
+                    transform.rotation *= rotationY;
+                    frame++;
+                    if (frame == 6)
+                    {
+                        turnLeft = false;
+                        frame = 0;
+                    }
                 }
+                else
+                {
+                    Quaternion rotationY = Quaternion.AngleAxis(0.1f, Vector3.down);
+                    transform.rotation *= rotationY;
+                    frame++;
+                    if (frame == 6)
+                    {
+                        turnLeft = true;
+                        frame = 0;
+                    }
+                }
+
+                //switch (left)
+                //{
+                //    case false:
+                //        {
+                //            Quaternion rotationY = Quaternion.AngleAxis(0.1f, Vector3.down);
+                //            transform.rotation *= rotationY;
+                //            frame++;
+                //            if (frame == 6)
+                //            {
+                //                left = true;
+                //                frame = 0;
+                //            }
+                //            break;
+                //        }
+                //    case true:
+                //        {
+                //            Quaternion rotationY = Quaternion.AngleAxis(0.1f, Vector3.up);
+                //            transform.rotation *= rotationY;
+                //            frame++;
+                //            if (frame == 6)
+                //            {
+                //                left = false;
+                //                frame = 0;
+                //            }
+                //            break;
+                //        }
+                //    default:
+                //        {
+
+                //            break;
+                //        }
+                //}
             }
         }
         

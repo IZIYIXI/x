@@ -15,7 +15,7 @@ public class TranlationMover : MonoBehaviour
     Transform[] Points = new Transform[2];
 
     private int targetPointID = 0;
-    public float speed = 5f;
+    public float speed = 10f;
     public float distanceTravelled = 0f;
     private float targetDistance;
     //public bool railsTurn = false;
