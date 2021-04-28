@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandButton : XRBaseInteractable
 {
-    public UnityEvent OnPress = null;
+    //public UnityEvent OnPress = null;
 
     public RaillsRotation raillsRotation; //в самом Unity перетащил скрипт к которому (смотри в свойствах этого скрипта у направляющих рельсов)
 
@@ -90,7 +90,7 @@ public class HandButton : XRBaseInteractable
         }
         else if (yCur < yMin + (yMax - yMin) * 0.01f)
         {
-            OnPress.Invoke();
+            //OnPress.Invoke();
             //raillsRotation.railsTurn = !raillsRotation.railsTurn;
             raillsRotation.railsTurn = true;
             meshRenderer.material = selectedMaterial;
@@ -100,7 +100,6 @@ public class HandButton : XRBaseInteractable
             raillsRotation.railsTurn = false;
             meshRenderer.material = originalMaterial;
         }
-
     }
 
     //private float GetLocalYPosition(Vector3 position)
