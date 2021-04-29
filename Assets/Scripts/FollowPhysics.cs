@@ -5,15 +5,17 @@ using UnityEngine;
 public class FollowPhysics : MonoBehaviour
 {
     public Transform target;
-    Rigidbody rb;
+    //private Rigidbody rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
     
     void FixedUpdate()
     {
-        rb.MovePosition(target.transform.position);
+        //rb.MovePosition(target.transform.position);
+        //rb.position = target.transform.position;
+        transform.position = target.transform.position;
     }
 }

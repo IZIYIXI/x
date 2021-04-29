@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class HandleLever : XRBaseInteractable
+public class HandleLever : MonoBehaviour
 {
-    public RaillsRotation raillsRotation; //в самом Unity перетащил скрипт к которому (смотри в свойствах этого скрипта у направл€ющих рельсов)
+    public RaillsRotation raillsRotation;
 
     private float rotMin;
     private float rotMax;
 
-    // Start is called before the first frame update
     void Start()
     {
         HingeJoint jnt = GetComponent<HingeJoint>();
@@ -25,11 +24,30 @@ public class HandleLever : XRBaseInteractable
         //Debug.Log("rotMax " + rotMax.ToString());
     }
 
-    public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
+    //public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
+    //{
+    //    float rotCur = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
+
+    //    //Debug.Log(rotCur.ToString());
+
+    //    if (rotCur < rotMin + 10f)
+    //    {
+    //        raillsRotation.railsTurn = true;
+    //        //Debug.Log("!!! Rails left !!!");
+    //    }
+
+    //    if (rotCur > rotMax - 10f)
+    //    {
+    //        raillsRotation.railsTurn = false;
+    //        //Debug.Log("!!! Rails right !!!");
+    //    }
+    //}
+
+    void Update()
     {
         float rotCur = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
 
-        Debug.Log(rotCur.ToString());
+        //Debug.Log(rotCur.ToString());
 
         if (rotCur < rotMin + 10f)
         {
