@@ -9,6 +9,7 @@ TagManager:
   - Point2
   - Point3
   - People
+  - Trolley
   layers:
   - Default
   - TransparentFX
