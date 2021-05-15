@@ -4363,6 +4363,26 @@ CapsuleCollider:
   m_Height: 0.4678675
   m_Direction: 0
   m_Center: {x: -0.23393375, y: 0, z: 0}
+--- !u!1 &185163952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 679834144b39ebb49bfc8566678cec1b, type: 3}
+  m_PrefabInstance: {fileID: 66971571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &185163953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185163952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde38f647f458ba4fa9e9a6e40ad9b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  X: 0
+  Y: 0
+  Z: 0
 --- !u!1 &189747386
 GameObject:
   m_ObjectHideFlags: 0
@@ -39394,7 +39414,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ad85dfe2430c9944a67aabf28740c2d, type: 2}
+  - {fileID: 2100000, guid: 255436391f9524147a37a599920b6a29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
