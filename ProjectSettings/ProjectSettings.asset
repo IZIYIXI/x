@@ -129,9 +129,12 @@ PlayerSettings:
     Others: 1
   bundleVersion: 0.1337
   preloadedAssets:
-  - {fileID: 11400000, guid: a7a9839da5fb0024fb683b18fc1fb7ee, type: 2}
-  - {fileID: 8400214747797404169, guid: bcbecd30a5e175340ac527400ae86441, type: 2}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: a7a9839da5fb0024fb683b18fc1fb7ee, type: 2}
+  - {fileID: 1535535363349725154, guid: a60705278b1bfc44aaa68d0d71dcba1d, type: 2}
+  - {fileID: 0}
+  - {fileID: 8400214747797404169, guid: bcbecd30a5e175340ac527400ae86441, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -260,7 +263,14 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 77751f1bd02d91744b24564200d62389, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons: []
   m_BuildTargetBatching:
   - m_BuildTarget: Standalone
