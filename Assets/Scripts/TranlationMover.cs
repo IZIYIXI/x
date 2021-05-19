@@ -151,8 +151,8 @@ public class TranlationMover : MonoBehaviour
 
             Debug.Log("Connection...");
             //connectionString = @"Data Source = .;user id = .;password = .; "
-            sqlConnection = new SqlConnection("Data Source=appserver01.main.tpu.ru;User ID=ars13;Password=MC03LkA3;Initial Catalog=trolley_problem;Integrated Security=true"); //(SQL Server 14.0.3356.20 - TPU\ars13)
-            string userId = "1337";
+            sqlConnection = new SqlConnection("Data Source=GOD\\SQLEXPRESS (10.0 SP1);Initial Catalog=trolley_problem"); //(SQL Server 14.0.3356.20 - TPU\ars13) Integrated Security=True
+        string userId = "1337";
             //bool isFirst = true;
             int isFirst = 0;
             sqlConnection.Open();
