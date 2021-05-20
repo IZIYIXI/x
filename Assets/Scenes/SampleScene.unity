@@ -1557,7 +1557,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 710049894ad720b4c91c7003a33e7006, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 710049894ad720b4c91c7003a33e7006, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10677,8 +10677,8 @@ Transform:
   m_LocalPosition: {x: 10.72, y: -3.02, z: -34.6}
   m_LocalScale: {x: 1.81, y: 1.5, z: 1.81}
   m_Children:
-  - {fileID: 87761973}
   - {fileID: 1568648687}
+  - {fileID: 87761973}
   - {fileID: 1934663611}
   - {fileID: 231583215}
   - {fileID: 660629455}
@@ -15674,7 +15674,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691547733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5cce16ebf871fb4dab3976bb0e6877d, type: 3}
   m_Name: 
@@ -33116,6 +33116,7 @@ GameObject:
   - component: {fileID: 1378018609}
   - component: {fileID: 1378018607}
   - component: {fileID: 1378018608}
+  - component: {fileID: 1378018610}
   m_Layer: 0
   m_Name: Normcore Realtime
   m_TagString: Untagged
@@ -33151,7 +33152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92f9549047646b4eb2278722a5a953f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabName: MultiplayerLever
+  prefabName: Multiplayer Lever
 --- !u!4 &1378018609
 Transform:
   m_ObjectHideFlags: 0
@@ -33166,6 +33167,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378018610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378018606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b6ae53fe1e66d429cc41bbf5b29cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localAvatarPrefab: {fileID: 5129247454135275376, guid: 289ddfbaca279774c9f0ee3c9409911e, type: 3}
+  _localPlayer:
+    root: {fileID: 0}
+    head: {fileID: 0}
+    leftHand: {fileID: 0}
+    rightHand: {fileID: 0}
 --- !u!1001 &1381640827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37211,7 +37230,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: febbca6692825d647a616515d37b3b1e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: febbca6692825d647a616515d37b3b1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37259,7 +37278,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 476d621e7b831cf498f100deb0fb23d4, type: 2}
     - target: {fileID: 919132149155446097, guid: febbca6692825d647a616515d37b3b1e, type: 3}
       propertyPath: m_Name
-      value: Rails_3 1
+      value: Turnable Rails
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: febbca6692825d647a616515d37b3b1e, type: 3}

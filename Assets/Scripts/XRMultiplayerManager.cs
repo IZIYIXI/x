@@ -19,15 +19,15 @@ public class XRMultiplayerManager : MonoBehaviour
 
     private void Realtime_didConnectToRoom(Realtime realtime)
     {
-        int prefabCount = realtime.room.datastore.prefabViewModels.Count;
+        //int prefabCount = realtime.room.datastore.prefabViewModels.Count;
 
-        var localMultiplayerObject = Realtime.Instantiate(prefabName,
-            position: new Vector3(transform.position.x /*+ prefabCount * 0.5f*/, transform.position.y, transform.position.z),
-            rotation: transform.rotation,
-            ownedByClient: true,
-            preventOwnershipTakeover: false,
-            destroyWhenOwnerOrLastClientLeaves: true,
-            useInstance: realtime);
+        //var localMultiplayerObject = Realtime.Instantiate(prefabName,
+        //    position: new Vector3(transform.position.x /*+ prefabCount * 0.5f*/, transform.position.y, transform.position.z),
+        //    rotation: transform.rotation,
+        //    ownedByClient: true,
+        //    preventOwnershipTakeover: false,
+        //    destroyWhenOwnerOrLastClientLeaves: true,
+        //    useInstance: realtime);
     }
 
     private void OnDrawGizmosSelected()
