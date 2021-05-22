@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
 using PathCreation;
-using System.Data;
-using System.Data.SqlClient;
+//using System.Data;
+//using System.Data.SqlClient;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 public class TranlationMover : MonoBehaviour
 {
@@ -26,8 +28,8 @@ public class TranlationMover : MonoBehaviour
     private bool hasTurned = false;
 
     //private string connectionString;
-    SqlCommand sqlCommand;
-    SqlConnection sqlConnection;
+    //SqlCommand sqlCommand;
+    //SqlConnection sqlConnection;
     private string result;
 
     // Start is called before the first frame update
@@ -138,51 +140,83 @@ public class TranlationMover : MonoBehaviour
 
     private void SaveResult(string result)
     {
-        
-       
-            /*SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "appserver01.main.tpu.ru\\sqlvt";
-            builder.UserID = "TPU\\ars13";
-            builder.Password = "MC03LkA3";
-            builder.InitialCatalog = "trolley_problem";
-            builder.IntegratedSecurity = true;
-
-            SqlConnection connection = new SqlConnection(builder.ConnectionString);*/
-
-            Debug.Log("Connection...");
-            //connectionString = @"Data Source = .;user id = .;password = .; "
-            sqlConnection = new SqlConnection("Data Source=GOD\\SQLEXPRESS (10.0 SP1);Initial Catalog=trolley_problem"); //(SQL Server 14.0.3356.20 - TPU\ars13) Integrated Security=True
+            Debug.Log("Connection");
+        //connectionString = @"Data Source = .;user id = .;password = .; "
+        /*sqlConnection = new SqlConnection("Data Source=GOD\\SQLEXPRESS;Initial Catalog=trolley_problem;Integrated Security=True"); //(SQL Server 14.0.3356.20 - TPU\ars13) Integrated Security=True
         string userId = "1337";
-            //bool isFirst = true;
-            int isFirst = 0;
-            sqlConnection.Open();
-            //string connStr = "server=localhost;user=root;database=selection_problems;password=0000;"; // строка подключения к БД
-            //MySqlConnection connection = new MySqlConnection(connStr); // создаём объект для подключения к БД
-            //connection.Open(); // устанавливаем соединение с БД
+        //bool isFirst = true;
+        int isFirst = 0;
+        sqlConnection.Open();
+        //string connStr = "server=localhost;user=root;database=selection_problems;password=0000;"; // строка подключения к БД
+        //MySqlConnection connection = new MySqlConnection(connStr); // создаём объект для подключения к БД
+        //connection.Open(); // устанавливаем соединение с БД
 
-            string query = string.Format("SELECT result FROM results WHERE user_id='{0}'", userId);
-            sqlCommand = new SqlCommand(query, sqlConnection);
-
-            
-            SqlDataReader reader = sqlCommand.ExecuteReader();
-
-            //isFirst = !reader.HasRows;
-            if (reader.HasRows)
-            {
-                isFirst = 0;
-            }
-            else
-            {
-                isFirst = 1;
-            }
-            reader.Close();
+        string query = string.Format("SELECT result FROM results WHERE user_id='{0}'", userId);
+        sqlCommand = new SqlCommand(query, sqlConnection);
 
 
-            query = string.Format("INSERT INTO results (user_id, result, is_first) VALUES ({0}, {1}, {2})", userId, result, isFirst);
-            sqlCommand = new SqlCommand(query, sqlConnection);
+        SqlDataReader reader = sqlCommand.ExecuteReader();
 
-            sqlCommand.ExecuteNonQuery();
-            sqlConnection.Close(); // закрываем соединение с БД
+        //isFirst = !reader.HasRows;
+        if (reader.HasRows)
+        {
+            isFirst = 0;
+        }
+        else
+        {
+            isFirst = 1;
+        }
+        reader.Close();
+        query = string.Format("INSERT INTO results (user_id, result, is_first) VALUES ({0}, {1}, {2})", userId, result, isFirst);
+        sqlCommand = new SqlCommand(query, sqlConnection);
 
+        sqlCommand.ExecuteNonQuery();
+        sqlConnection.Close(); // закрываем соединение с БД*/
+
+
+        bool first = true;
+        string user_id;
+        // строка подключения к БД
+        string connStr = "server=sql6.freemysqlhosting.net;user=sql6413631;database=sql6413631;password=4dZwCEzyIB";
+        // создаём объект для подключения к БД
+        MySqlConnection connection = new MySqlConnection(connStr);
+        // устанавливаем соединение с БД
+        connection.Open();
+
+        //string query = "INSERT INTO trolley_problem (user_id, result, is_first) VALUES (UUID(), 'not_turn', b'1')";
+
+        //Раскомментить!
+        //string query = "DELETE FROM trolley_problem WHERE result = 'not_turn'";
+        //MySqlCommand command = new MySqlCommand(query, connection);
+        //command.ExecuteNonQuery();
+
+        string userId = "1337";
+        //bool isFirst = true;
+        int isFirst = 0;
+        //string result = "turn";
+        //string connStr = "server=localhost;user=root;database=selection_problems;password=0000;"; // строка подключения к БД
+        //MySqlConnection connection = new MySqlConnection(connStr); // создаём объект для подключения к БД
+        //connection.Open(); // устанавливаем соединение с БД
+
+        string query = string.Format("SELECT result FROM selection_problems WHERE user_id='{0}'", userId);
+        MySqlCommand command = new MySqlCommand(query, connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        //isFirst = !reader.HasRows;
+        if (reader.HasRows)
+        {
+            isFirst = 0;
+        }
+        else
+        {
+            isFirst = 1;
+        }
+        reader.Close();
+        query = string.Format("INSERT INTO selection_problems (user_id, result, is_first) VALUES ({0}, '{1}', {2})", userId, result, isFirst);
+        //query = "INSERT INTO trolley_problem (user_id, result, is_first) VALUES (" + userId + ", " + result + ", " + isFirst + ")";
+        //query = "INSERT INTO trolley_problem (user_id, result, is_first) VALUES (@userId,@result,@isFirst)";
+        command = new MySqlCommand(query, connection);
+
+        command.ExecuteNonQuery();
+        connection.Close();
     }
 }
