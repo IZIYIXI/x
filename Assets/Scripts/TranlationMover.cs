@@ -25,6 +25,8 @@ public class TranlationMover : MonoBehaviour
     private bool shouldMove = true;
     private bool hasTurned = false;
 
+    private string result;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,11 +58,13 @@ public class TranlationMover : MonoBehaviour
                         if (raillsRotation.railsTurn)
                         {
                             hasTurned = true;
-                            // SaveResult("Повернул стрелку");
+                            result = "turn";
+                            //SaveResult(result);
                         }
                         else
                         {
-                            // SaveResult("Не повернул стрелку");
+                            result = "not turn";
+                            //SaveResult(result);
                         }
                     }
                     if (targetPointID < Points.Length - 1)
@@ -121,6 +125,7 @@ public class TranlationMover : MonoBehaviour
         //    transform.Translate(Vector3.Normalize(target_Pos - transform.position) * Time.deltaTime * speed);
         //}
     }
+
     // Update is called once per frame
     /*void FixedUpdate() //поворот
     {
@@ -150,4 +155,72 @@ public class TranlationMover : MonoBehaviour
 
         connection.Close(); // закрываем соединение с БД
     }*/
+
+    /*private void SaveResult(string result)
+    {
+        Debug.Log("Connection");
+
+        bool first = true;
+        string user_id;
+        // строка подключения к БД
+        string connStr = "server=sql6.freemysqlhosting.net;user=sql6413631;database=sql6413631;password=4dZwCEzyIB";
+        // создаём объект для подключения к БД
+        MySqlConnection connection = new MySqlConnection(connStr);
+        // устанавливаем соединение с БД
+        connection.Open();
+
+
+        string userId = "1256";
+        //bool isFirst = true;
+        int isFirst = 0;
+
+        string query = string.Format("SELECT result FROM selection_problems WHERE user_id='{0}'", userId);
+        MySqlCommand command = new MySqlCommand(query, connection);
+        MySqlDataReader reader = command.ExecuteReader();
+        //isFirst = !reader.HasRows;
+        if (reader.HasRows)
+        {
+            isFirst = 0;
+        }
+        else
+        {
+            isFirst = 1;
+        }
+        reader.Close();
+        query = string.Format("INSERT INTO selection_problems (user_id, result, is_first) VALUES ({0}, '{1}', {2})", userId, result, isFirst);
+        command = new MySqlCommand(query, connection);
+
+        command.ExecuteNonQuery();
+        connection.Close();
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log("other.tag " + other.tag);
+        //Debug.Log("other.transform.parent.tag " + other.transform.parent.tag);
+        //Debug.Log("other.transform.parent.gameObject.tag " + other.transform.parent.gameObject.tag);
+        if (other.tag == "People")
+        {
+            //shouldMove = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //Debug.Log("other.tag " + other.tag);
+        //Debug.Log("other.transform.parent.tag " + other.transform.parent.tag);
+        //Debug.Log("other.transform.parent.gameObject.tag " + other.transform.parent.gameObject.tag);
+        if (other.tag == "People")
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(0, 0, 1);
+        }
+    }
+
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.collider.tag == "People")
+    //    {
+    //        Debug.Log("Hit!");
+    //    }
+    //}
 }
