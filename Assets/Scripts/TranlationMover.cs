@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
 using PathCreation;
-//using MySql.Data;
-//using MySql.Data.MySqlClient;
+using UnityEngine.UI;
 
 public class TranlationMover : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class TranlationMover : MonoBehaviour
     public GameObject turnPoint;
     public GameObject straightEndPoint;
     public GameObject curveEndPoint;
+    public GameObject playerData;
 
     Transform[] Points = new Transform[2];
 
@@ -60,11 +60,13 @@ public class TranlationMover : MonoBehaviour
                             hasTurned = true;
                             result = "turn";
                             //SaveResult(result);
+                            playerData.GetComponent<Text>().text = result;
                         }
                         else
                         {
                             result = "not turn";
                             //SaveResult(result);
+                            playerData.GetComponent<Text>().text = result;
                         }
                     }
                     if (targetPointID < Points.Length - 1)

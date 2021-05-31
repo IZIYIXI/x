@@ -6,7 +6,7 @@ using UnityEngine;
 public class XRMultiplayerManager : MonoBehaviour
 {
     [SerializeField]
-    private string prefabName = "";
+    //private string prefabName = "";
 
     private Realtime realtime;
 
