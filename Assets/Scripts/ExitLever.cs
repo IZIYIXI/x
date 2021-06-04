@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitLever : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class ExitLever : MonoBehaviour
 
         if (rotCur < rotMin + 10f)
         {
-            Application.LoadLevel("Main_Menu");
+            SceneManager.LoadScene("Main_Menu", LoadSceneMode.Single);
         }
 
         if (rotCur > rotMax - 10f)

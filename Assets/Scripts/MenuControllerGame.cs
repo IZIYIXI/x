@@ -4,26 +4,13 @@ using UnityEngine;
 
 public class MenuControllerGame : MonoBehaviour
 {
+    //public void BackToMainMenu()
+    //{
+    //    Application.LoadLevel("Main_Menu");
+    //}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void BackToMainMenu()
-    {
-        Application.LoadLevel("Main_Menu");
-    }
-
-    public void Repeat()
-    {
-        Application.LoadLevel("SampleScene");
-    }
+    //public void Repeat()
+    //{
+    //    Application.LoadLevel("SampleScene");
+    //}
 }
