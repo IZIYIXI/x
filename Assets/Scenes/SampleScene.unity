@@ -14053,7 +14053,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 90
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -50967,7 +50967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9142721875158298165, guid: 8623929742aca2641b30e8df60eb7704, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9142721875158298165, guid: 8623929742aca2641b30e8df60eb7704, type: 3}
       propertyPath: isForRails
