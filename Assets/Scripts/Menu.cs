@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        playerDataPath = Application.dataPath + "/Results/";
+        playerDataPath = Application.persistentDataPath + "/Results/";
         playerDataFileName = "results.kgtp";
     }
 
@@ -62,45 +63,34 @@ public class Menu : MonoBehaviour
 
     public void LoadGameScene()
     {
-        Application.LoadLevel("SampleScene");
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 
     public void NicknameChosen()
     {
-        //Debug.Log(this.name);
         nickname = GameObject.Find(EventSystem.current.currentSelectedGameObject.name).GetComponentInChildren<Text>().text;
-        Debug.Log(nickname);
 
-        try
+        if (!File.Exists(Path.Combine(playerDataPath, playerDataFileName)))
         {
-            if (!File.Exists(playerDataPath))
-            {
-                Debug.Log("!File.Exists");
-                Directory.CreateDirectory(playerDataPath);
-                File.Create(playerDataPath + playerDataFileName);
-                using (StreamWriter sw = new StreamWriter(playerDataPath + playerDataFileName, false, System.Text.Encoding.Default))
-                {
-                    sw.Write(nickname + "&");
-                    sw.Flush();
-                    sw.Close();
-                }
-            }
-            else
-            {
-                Debug.Log("else");
-                using (StreamWriter sw = new StreamWriter(playerDataPath + playerDataFileName, true, System.Text.Encoding.Default))
-                {
-                    sw.Write(nickname + "&");
-                    sw.Flush();
-                    sw.Close();
-                }
-            }
+            Directory.CreateDirectory(playerDataPath);
+            FileStream fs = File.Create(Path.Combine(playerDataPath, playerDataFileName));
+            fs.Close();
         }
-        catch (Exception e)
-        {
-            Debug.Log(e.GetType().ToString());
-            Debug.Log(e.Message);
-        }
+
+        //try
+        //{
+            using (StreamWriter sw = new StreamWriter(Path.Combine(playerDataPath, playerDataFileName), true, System.Text.Encoding.Default))
+            {
+                sw.Write("\r\n" + nickname + "&");
+                sw.Flush();
+                sw.Close();
+            }
+        //}
+        //catch (Exception e)
+        //{
+        //    Debug.Log(e.GetType().ToString());
+        //    Debug.Log(e.Message);
+        //}
 
         ShowIntro();
     }

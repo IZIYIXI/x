@@ -17,7 +17,7 @@ public class MenuTrigger : MonoBehaviour
 
     void Start()
     {
-        playerDataPath = Application.dataPath + "/Results/";
+        playerDataPath = Application.persistentDataPath + "/Results/";
         playerDataFileName = "results.kgtp";
     }
 
@@ -26,57 +26,93 @@ public class MenuTrigger : MonoBehaviour
         if (other.tag == "Trolley")
         {
             string line = "", lastLine = "";
+            string pt = playerData.GetComponent<Text>().text;
 
-            Text pt = playerData.GetComponent<Text>();
-
-            if (pt.text == "turn")
+            if (pt == "turn")
             {
-                menuText.GetComponent<Text>().text = "Вы сделали выбор вмешаться и спасти пять жизней, пожертвовав одной. Но стоило ли оно того? \r\nНа этом эксперимент окончен, спасибо за участие. Чтобы вернуться в главное меню, переключите рычаг у вас за спиной.";
+                menuText.GetComponent<Text>().text = "Вы сделали выбор вмешаться и спасти пять жизней, пожертвовав одной. Но стоило ли оно того?";
 
-                using (StreamReader sr = new StreamReader(playerDataPath + playerDataFileName, System.Text.Encoding.Default))
-                {
-                    while ((line = sr.ReadLine()) != null)
+                //try
+                //{
+                    using (StreamReader sr = new StreamReader(Path.Combine(playerDataPath, playerDataFileName), System.Text.Encoding.Default))
                     {
-                        lastLine = line;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            lastLine = line;
+                        }
                     }
-                }
-
-                if ((lastLine != "") && (lastLine[lastLine.Length-1] == '&'))
-                {
-                    using (StreamWriter sw = new StreamWriter(playerDataPath + playerDataFileName, true, System.Text.Encoding.Default))
-                    {
-                        sw.WriteLine("turn");
-                        sw.Flush();
-                        sw.Close();
-                    }
-                }
-            }
-            else if (pt.text == "not turn")
-            {
-                menuText.GetComponent<Text>().text = "Вы сделали выбор не вмешиваться в чужие судьбы и пятеро человек всё-таки погибли. Но это же вас не касается, ведь так? \r\nНа этом эксперимент окончен, спасибо за участие. Чтобы вернуться в главное меню, переключите рычаг у вас за спиной.";
-
-                using (StreamReader sr = new StreamReader(playerDataPath + playerDataFileName, System.Text.Encoding.Default))
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        lastLine = line;
-                    }
-                }
+                //}
+                //catch (Exception e)
+                //{
+                //    Debug.Log(e.GetType().ToString());
+                //    Debug.Log(e.Message);
+                //}
 
                 if ((lastLine != "") && (lastLine[lastLine.Length - 1] == '&'))
                 {
-                    using (StreamWriter sw = new StreamWriter(playerDataPath + playerDataFileName, true, System.Text.Encoding.Default))
+                    //try
+                    //{
+                        using (StreamWriter sw = new StreamWriter(Path.Combine(playerDataPath, playerDataFileName), true, System.Text.Encoding.Default))
+                        {
+                            sw.Write("turn");
+                            sw.Flush();
+                            sw.Close();
+                        }
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Debug.Log(e.GetType().ToString());
+                    //    Debug.Log(e.Message);
+                    //}
+                }
+            }
+            else if (pt == "not turn")
+            {
+                menuText.GetComponent<Text>().text = "Вы сделали выбор не вмешиваться в чужие судьбы и пятеро человек всё-таки погибли. Но это же вас не касается, ведь так?";
+
+                if (File.Exists(Path.Combine(playerDataPath, playerDataFileName)))
+                {
+                    //try
+                    //{
+                        using (StreamReader sr = new StreamReader(Path.Combine(playerDataPath, playerDataFileName), System.Text.Encoding.Default))
+                        {
+                            while ((line = sr.ReadLine()) != null)
+                            {
+                                lastLine = line;
+                            }
+                        }
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Debug.Log(e.GetType().ToString());
+                    //    Debug.Log(e.Message);
+                    //}
+
+                    if ((lastLine != "") && (lastLine[lastLine.Length - 1] == '&'))
                     {
-                        sw.WriteLine("not turn");
-                        sw.Flush();
-                        sw.Close();
+                        //try
+                        //{
+                            using (StreamWriter sw = new StreamWriter(Path.Combine(playerDataPath, playerDataFileName), true, System.Text.Encoding.Default))
+                            {
+                                sw.Write("not turn");
+                                sw.Flush();
+                                sw.Close();
+                            }
+                        //}
+                        //catch (Exception e)
+                        //{
+                        //    Debug.Log(e.GetType().ToString());
+                        //    Debug.Log(e.Message);
+                        //}
                     }
                 }
             }
             else
             {
-                menuText.GetComponent<Text>().text = "Вы сделали... Я не знаю, что именно вы сделали, но каким-то образом вы сломали эксперимент. Пожалуйста, больше так не делайте. \r\nНа этом эксперимент окончен, спасибо за участие. Чтобы вернуться в главное меню, переключите рычаг у вас за спиной.";
+                menuText.GetComponent<Text>().text = "Вы сделали... Я не знаю, что именно вы сделали, но каким-то образом вы сломали эксперимент. Пожалуйста, больше так не делайте.";
             }
+
+            menuText.GetComponent<Text>().text += "\r\nНа этом эксперимент окончен, спасибо за участие. Чтобы вернуться в главное меню, переключите рычаг у вас за спиной.";
 
             exitLever.SetActive(true);
             menu.SetActive(true);
