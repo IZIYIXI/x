@@ -15,32 +15,36 @@ public class HandleLever : MonoBehaviour
     void Start()
     {
         HingeJoint jnt = GetComponent<HingeJoint>();
-        rotMin = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x + jnt.limits.min;
-        rotMax = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x + jnt.limits.max;
+        //rotMin = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x + jnt.limits.min;
+        rotMin = gameObject.transform.localRotation.eulerAngles.x + jnt.limits.min;
+        //rotMax = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x + jnt.limits.max;
+        rotMax = gameObject.transform.localRotation.eulerAngles.x + jnt.limits.max;
     }
 
     void Update()
     {
-        float rotCur = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
+        //float rotCur = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform).x;
+        Vector3 rotCur = gameObject.transform.localEulerAngles;
+        Debug.Log(rotCur.x + " | " + rotCur.y + " | " + rotCur.z);
+        //Debug.Log("--------");
+        //Debug.Log(gameObject.transform.eulerAngles.x + " | " + gameObject.transform.eulerAngles.y + " | " + gameObject.transform.eulerAngles.z);
+        //Debug.Log(gameObject.transform.localEulerAngles.x + " | " + gameObject.transform.localEulerAngles.y + " | " + gameObject.transform.localEulerAngles.z);
+        //Debug.Log("--------");
 
-        if (rotCur < rotMin + 10f)
+        //if (rotCur < rotMin + 10f)
+        if (rotCur.y < 100f)
         {
-            GetComponent<AudioSource>().Play(0);
-
-            if (isForRails)
-            {
-                raillsRotation.railsTurn = true;
-            }
+            raillsRotation.railsTurn = false;
         }
 
-        if (rotCur > rotMax - 10f)
+        if (rotCur.y > 260f)
         {
-            GetComponent<AudioSource>().Play(0);
+            raillsRotation.railsTurn = true;
+        }
 
-            if (isForRails)
-            {
-                raillsRotation.railsTurn = false;
-            }
+        if ((rotCur.x < 271f) && (!GetComponent<AudioSource>().isPlaying))
+        {
+            GetComponent<AudioSource>().Play();
         }
     }
 }
