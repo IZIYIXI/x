@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Kostyl Games
-  productName: x
+  productName: Trolley Problem
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -129,9 +129,11 @@ PlayerSettings:
     Others: 1
   bundleVersion: 0.1337
   preloadedAssets:
-  - {fileID: 11400000, guid: a7a9839da5fb0024fb683b18fc1fb7ee, type: 2}
-  - {fileID: 8400214747797404169, guid: bcbecd30a5e175340ac527400ae86441, type: 2}
   - {fileID: 0}
+  - {fileID: 11400000, guid: a7a9839da5fb0024fb683b18fc1fb7ee, type: 2}
+  - {fileID: 1535535363349725154, guid: a60705278b1bfc44aaa68d0d71dcba1d, type: 2}
+  - {fileID: 11400000, guid: 3a3978e088eaa74458f8023b8adca067, type: 2}
+  - {fileID: 8400214747797404169, guid: bcbecd30a5e175340ac527400ae86441, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -149,7 +151,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.KostylGames.x
+    Standalone: com.KostylGames.TrolleyProblem
   buildNumber:
     Standalone: 0
     iPhone: 0
