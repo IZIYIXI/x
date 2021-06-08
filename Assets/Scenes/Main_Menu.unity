@@ -7491,7 +7491,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 200
-  Pan2D: 0.5
+  Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -7572,7 +7572,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907338736}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d246270f25d7fea4f8fe0aba10a475a0, type: 3}
@@ -7668,7 +7668,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907338736}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77c921ff35e67b44887aa67670a25f79, type: 3}
@@ -7683,7 +7683,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 200
-  Pan2D: -0.5
+  Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
